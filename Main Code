@@ -11,7 +11,7 @@ LEFT_EDGE = -400
 BOTTOM_EDGE = -400
 TOP_EDGE = 400
 
-GRAVITY = .1
+GRAVITY = -.1 #made gravity negative to reverse the y direction effect the gravity has
 DAMPING = .8
 FRICTION = .02
 
@@ -40,8 +40,8 @@ def moveBall():
     #Check for collisons and reverse the direction if so
     if (x >= RIGHT_EDGE):
         xVel *= -1
-        RLcolors = ["blue", "red", "yellow", "brown"]. #created a list to store colors
-        ball.color(random.choice(RLcolors)) #program picks random choice from the list
+        RLcolors = ["blue", "red", "yellow", "brown"]
+        ball.color(random.choice(RLcolors))
         if xVel!=0:
             ball.setx(x + xVel-5)
 
@@ -52,21 +52,22 @@ def moveBall():
         if xVel!=0:
             ball.setx(x + xVel+5)
    
-    if (y <= BOTTOM_EDGE+5):
+    if (y <= BOTTOM_EDGE):
         yVel *= -1
         TBcolors = ["chocolate", "skyblue", "yellow"]
         ball.color(random.choice(TBcolors))
+        ball.sety(y + yVel-5)
+
+    if (y >= TOP_EDGE + 5):
+        yVel *= -1
+        TBcolors = ["chocolate", "skyblue", "yellow"]
+        ball.color(random.choice(TBcolors))
+        #switched damping effect from the bottom edge to the top edge
         yVel = yVel * DAMPING #damping effect
         if yVel>2:
             ball.sety(y + yVel+5)
         else:
             yVel=0
-
-    if (y >= TOP_EDGE):
-        yVel *= -1
-        TBcolors = ["chocolate", "skyblue", "yellow"]
-        ball.color(random.choice(TBcolors))
-        ball.sety(y + yVel-5)
 
 def spacebarpress():  #created a function to call from the main program and to use in the onkey command to make things easier
     global RIGHT_EDGE, LEFT_EDGE, TOP_EDGE, BOTTOM_EDGE #needed global variables to bring the border values inside the function
