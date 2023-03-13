@@ -3,7 +3,7 @@
 #import needed libraries   
 import turtle
 from turtle import *
-
+#added code to change ball to random color each time it hits a wall
 #Define constants
 RIGHT_EDGE= 400
 LEFT_EDGE = -400
@@ -39,8 +39,8 @@ def moveBall():
     #Check for collisons and reverse the direction if so
     if (x >= RIGHT_EDGE):
         xVel *= -1
-        RLcolors = ["blue", "red", "yellow", "brown"]
-        ball.color(random.choice(RLcolors))
+        RLcolors = ["blue", "red", "yellow", "brown"]. #created a list to store colors
+        ball.color(random.choice(RLcolors)) #program picks random choice from the list
         if xVel!=0:
             ball.setx(x + xVel-5)
 
