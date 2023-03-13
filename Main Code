@@ -4,6 +4,7 @@
 import turtle
 from turtle import *
 #added code to change ball to random color each time it hits a wall
+#added code to change border size when user presses spacebar
 #Define constants
 RIGHT_EDGE= 400
 LEFT_EDGE = -400
@@ -67,6 +68,27 @@ def moveBall():
         ball.color(random.choice(TBcolors))
         ball.sety(y + yVel-5)
 
+def spacebarpress():  #created a function to call from the main program and to use in the onkey command to make things easier
+    global RIGHT_EDGE, LEFT_EDGE, TOP_EDGE, BOTTOM_EDGE #needed global variables to bring the border values inside the function
+    
+    #all the code in this function does is check whether the borders are normal or smaller and if the user presses spacebar it switches to the other size
+    if RIGHT_EDGE == 400:
+        RIGHT_EDGE = 175
+    else:
+        RIGHT_EDGE = 400
+    if LEFT_EDGE == -400:
+        LEFT_EDGE = -175
+    else:
+        LEFT_EDGE = 400
+    if TOP_EDGE == 400:
+        TOP_EDGE = 175
+    else:
+        TOP_EDGE = 400
+    if BOTTOM_EDGE == -400:
+        BOTTOM_EDGE = -175
+    else:
+        BOTTOM_EDGE == -400
+
     
 
 #Global variables
@@ -92,8 +114,10 @@ yVel = 3
 
 screen.tracer(0) #turn off auto screen updates to make it faster
 
+turtle.onkey(spacebarpress,"space") #linking the spacebar function to the spacebar key so that when the user presses space the function comes into effect
 
 while True:
     moveBall()
     screen.update()
+    spacebarpress() #calling the spacebar function
    
