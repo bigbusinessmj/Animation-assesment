@@ -3,6 +3,7 @@
 #import needed libraries   
 import turtle
 from turtle import *
+import random
 #added code to change ball to random color each time it hits a wall
 #added code to change border size when user presses spacebar
 #Define constants
