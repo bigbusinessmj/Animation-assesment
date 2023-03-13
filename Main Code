@@ -39,16 +39,22 @@ def moveBall():
     #Check for collisons and reverse the direction if so
     if (x >= RIGHT_EDGE):
         xVel *= -1
+        RLcolors = ["blue", "red", "yellow", "brown"]
+        ball.color(random.choice(RLcolors))
         if xVel!=0:
             ball.setx(x + xVel-5)
 
     if (x <= LEFT_EDGE):
         xVel *= -1
+        RLcolors = ["blue", "red", "yellow", "brown"]
+        ball.color(random.choice(RLcolors))
         if xVel!=0:
             ball.setx(x + xVel+5)
    
     if (y <= BOTTOM_EDGE+5):
         yVel *= -1
+        TBcolors = ["chocolate", "skyblue", "yellow"]
+        ball.color(random.choice(TBcolors))
         yVel = yVel * DAMPING #damping effect
         if yVel>2:
             ball.sety(y + yVel+5)
@@ -57,6 +63,8 @@ def moveBall():
 
     if (y >= TOP_EDGE):
         yVel *= -1
+        TBcolors = ["chocolate", "skyblue", "yellow"]
+        ball.color(random.choice(TBcolors))
         ball.sety(y + yVel-5)
 
     
